@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 1</title>
+  </head>
+  <body>
+    <script>
+      //Nhập từ bàn phím mảng số nguyên a gồ n phần tử (n<=50), đưa ra màn hình mảng vừa nhập và 1 mảng mới b bao gồm tất cả số nguyên tố của mảng a
+      // Hàm kiểm tra số nguyên tố
+      const isPrime = (n) => {
+        if (n <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+          if (n % i === 0) return false;
+        }
+        return true;
+      };
+
+      let n = Number(prompt("Nhập số phần tử của mảng a (n <= 50):"));
+      if (n > 50 || n <= 0) {
+        alert("Số phần tử phải lớn hơn 0 và nhỏ hơn hoặc bằng 50!");
+      } else {
+        let a = [];
+        for (let i = 0; i < n; i++) {
+          a.push(Number(prompt(`Nhập phần tử thứ ${i + 1}:`)));
+        }
+
+        let b = a.filter(isPrime);
+
+        console.log("Mảng a vừa nhập: ", a);
+        console.log("Mảng b các số nguyên tố: ", b);
+      }
+    </script>
+  </body>
+</html>

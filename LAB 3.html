@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SỔ TIẾT KIỆM</title>
+  </head>
+  <body>
+    <h1 style="text-align: center; color: brown">QUẢN LÝ SỔ TIẾT KIỆM</h1>
+    <div>
+      <h3 style="color: crimson">Thêm Sổ Tiết Kiệm</h3>
+      <form id="formThemSoTietKiem">
+        <label for="maSo">Mã số: </label>
+        <input type="text" id="maSo" required /><br />
+        <label for="loaiSoTk">Loại sổ TK: </label>
+        <input type="text" id="loaiSoTk" required /><br />
+        <label for="hoTenKH">Họ tên KH: </label>
+        <input type="text" id="hoTenKH" required /><br />
+        <label for="cmnd">CMND: </label>
+        <input type="number" id="cmnd" required /><br />
+        <label for="ngayMoSo">Ngày mở sổ: </label>
+        <input type="date" id="ngayMoSo" required /><br />
+        <label for="soTienGui">Số tiền gửi:</label>
+        <input type="number" id="soTienGui" required /><br />
+        <button type="submit">Thêm Sổ Tiết Kiệm</button>
+      </form>
+    </div>
+    <div id="danhsachSoTietKiem">
+      <h3 style="color: crimson">Danh Sách Sổ Tiết Kiệm</h3>
+      <ul id="listSoTietKiem"></ul>
+    </div>
+    <script>
+      // Hãy khai báo class biểu diễn thông tin của một sổ tiết kiệm (SOTIETKIEM). Biết rằng một sổ tiết kiệm gồm những thành phần sau:
+      // Mã số: chuỗi tối đa 5 kí tự
+      // Loại sổ tk: chuỗi tối đa 10 kí tự
+      // Họ tên KH: chuỗi tối đa 30 kí tự
+      // CMND: kiểu số nguyên
+      // Ngày mở sổ: kiểu chuỗi (đúng format ngày dd/mm/yyyy)
+      // Số tiền gửi: kiểu số nguyên
+
+      class SOTIETKIEM {
+        constructor(maSo, loaiSoTk, hoTenKH, cmnd, ngayMoSo, soTienGui) {
+          this.maSo = maSo;
+          this.loaiSoTk = loaiSoTk;
+          this.hoTenKH = hoTenKH;
+          this.cmnd = cmnd;
+          this.ngayMoSo = ngayMoSo;
+          this.soTienGui = soTienGui;
+        }
+
+        hienThiThongTin() {
+          document.write(`Thông tin sổ tiết kiệm:   </br>
+                Mã số: ${this.maSo}</br>
+                Loại sổ TK: ${this.loaiSoTk}</br>
+                Họ tên KH: ${this.hoTenKH}</br>  
+                CMND: ${this.cmnd}</br>
+                Ngày mở sổ: ${this.ngayMoSo}</br>
+                Số tiền gửi: ${this.soTienGui}</br> `);
+        }
+
+        kiemTraCMND() {
+          return Number.isInteger(this.cmnd);
+        }
+      }
+
+      let soTietKiem1 = new SOTIETKIEM(
+        "691999",
+        "Tiết kiệm ngắn hạn",
+        "ĐÀM TỔNG",
+        123456789,
+        "05/12/2024",
+        9999999999
+      );
+
+      console.log(soTietKiem1.hienThiThongTin());
+
+      console.log("CMND hợp lệ:", soTietKiem1.kiemTraCMND());
+    </script>
+  </body>
+</html>
